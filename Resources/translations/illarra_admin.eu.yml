@@ -1,0 +1,39 @@
+menu:
+    content:
+        main:        Edukiak
+        contents:    Orokorrak
+        variables:   Bariableak
+
+content:
+    label:
+        tag:         Kodea
+        text:        Testu orokorra
+    title:
+        edit:        Edukia editatu
+        index:       Eduki orokorrak
+        new:         Eduki berria sortu
+        show:        Eduki orokorra
+
+variable:
+    label:
+        tag:         Kodea
+        text:        Balorea
+    title:
+        edit:        Bariablea editatu
+        index:       Bariableak
+        new:         Crear una nueva variable
+        show:        Bariablea
+
+#
+# Actions
+#
+
+action:
+    addNewImage:     Irudi berri bat gehitu
+
+#
+# Global labels
+#
+
+label:
+    images:          Irudiak

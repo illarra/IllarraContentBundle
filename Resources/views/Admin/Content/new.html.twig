@@ -1,0 +1,30 @@
+{% extends "IllarraCoreBundle:Admin:layout.html.twig" %}
+
+{% import "IllarraCoreBundle:Admin:helper.html.twig" as helper %}
+
+{% trans_default_domain "illarra_admin" %}
+
+{% block content %}
+<div class="row">
+    <div class="twelve columns">
+        <div class="button-bar">
+            <ul class="button-group radius">
+                <li>{{ helper.action_back_button(path('admin_illarra_content_content_index')) }}</li>
+            </ul>
+        </div>
+        <hr class="dark" />
+        <h3>{{ 'content.title.new'|trans }}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 columns">
+        {% include 'IllarraContentBundle:Admin/Content:_form.html.twig'
+            with {
+                'action': path('admin_illarra_content_content_create'),
+                'method': 'POST',
+                'form': form
+            } only
+        %}
+    </div>
+</div>
+{% endblock %}

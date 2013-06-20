@@ -1,0 +1,49 @@
+{% extends "IllarraCoreBundle:Admin:layout.html.twig" %}
+
+{% import "IllarraCoreBundle:Admin:helper.html.twig" as helper %}
+
+{% trans_default_domain "illarra_admin" %}
+
+{% block content %}
+<div class="row">
+    <div class="large-12 columns">
+        <div class="button-bar">
+            <ul class="button-group radius">
+                <li>{{ helper.action_back_button(path('admin_illarra_content_content_index')) }}</li>
+            </ul>
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <ul class="button-group radius">
+                    <li>
+                        <form action="{{ path('admin_illarra_content_content_delete', { 'id': entity.id }) }}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_widget(delete_form) }}
+                            <button class="alert button" type="submit">{{ 'action.delete'|trans }}</button>
+                        </form>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+        <hr class="dark" />
+        <h3>{{ 'content.title.edit'|trans }}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 columns">
+        {% include 'IllarraContentBundle:Admin/Content:_form.html.twig'
+            with {
+                'action': path('admin_illarra_content_content_update', { 'id': entity.id }),
+                'method': 'PUT',
+                'form': edit_form
+            } only
+        %}
+    </div>
+    <div class="large-4 columns">
+        <hr class="show-for-small" />
+        <ul class="small no-bullet color-text-light">
+            <li><i class="icon-key"></i> {{ entity.id }}</li>
+            <li><i class="icon-ok"></i> {{ 'label.createdAt'|trans }}: {{ entity.createdAt|date('format.datetime'|trans) }}</li>
+            <li><i class="icon-edit"></i> {{ 'label.updatedAt'|trans }}: {{ entity.updatedAt|date('format.datetime'|trans) }}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

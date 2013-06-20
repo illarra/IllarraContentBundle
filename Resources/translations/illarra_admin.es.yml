@@ -1,0 +1,39 @@
+menu:
+    content:
+        main:        Contenidos
+        contents:    Generales
+        variables:   Variables
+
+content:
+    label:
+        tag:         Identificador
+        text:        Texto general
+    title:
+        edit:        Editar contenido
+        index:       Contenidos
+        new:         Crear un nuevo contenido
+        show:        Contenido
+
+variable:
+    label:
+        tag:         Identificador
+        text:        Variable
+    title:
+        edit:        Editar variable
+        index:       Variables
+        new:         Crear una nueva variable
+        show:        Variable
+
+#
+# Actions
+#
+
+action:
+    addNewImage:     Añadir una nueva imagen
+
+#
+# Global labels
+#
+
+label:
+    images:          Imágenes

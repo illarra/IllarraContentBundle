@@ -1,0 +1,20 @@
+services:
+    illarra_content.image_oncreate_listener:
+        class: Illarra\ContentBundle\EventListener\ImageEntityListener
+        arguments: ["@kernel"]
+        tags:
+            - { name: doctrine.event_listener, event: postLoad }
+            - { name: doctrine.event_listener, event: prePersist }
+
+    illarra_content.twig.extension:
+        class: Illarra\ContentBundle\Twig\ContentExtension
+        arguments:
+            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }
+    
+    illarra_content.configure_admin_menu_listener:
+        class: Illarra\ContentBundle\EventListener\ConfigureAdminMenuListener
+        arguments: ["@security.context"]
+        tags:
+            - { name: kernel.event_listener, event: illarra_core.configure_admin_menu, method: onMenuConfigure }

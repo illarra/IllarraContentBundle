@@ -1,0 +1,47 @@
+{% trans_default_domain "illarra_admin" %}
+
+{% import "IllarraCoreBundle:Admin:helper.html.twig" as helper %}
+
+<div class="section">
+    <div class="hide" data-image-form-tpl data-prototype="{{
+        ('<li data-image-form>'
+            ~ form_widget(images.vars.prototype)
+            ~ '<i class="icon-remove" data-image-delete></i>'
+            ~ '</li>'
+        )|e }}">
+    </div>
+    <h5 class="title">
+        <a href="#">
+            <i class="icon-section-indicator"></i> {{ 'label.images'|trans }}
+        </a>
+    </h5>
+    <div class="content">
+        <ul class="small-block-grid-2 large-block-grid-4" data-images-section data-sortable>
+        {% for image in images %}
+            <li data-image-form {{ helper.data_entity(image.vars.value) }}>
+                {{ form_widget(image.file, {'type': 'hidden'}) }}
+                {% if image.source.vars.value != '' %}
+                    <img src="{{ image.source.vars.value|imagine_filter('square') }}" />
+                {% endif %}
+                <p>
+                    {{ helper.render_sort_icon(image.vars.value) }}
+                    {{ helper.render_is_featured_icon(image.vars.value) }}
+                    {{ helper.render_is_visible_icon(image.vars.value) }}
+                    ID: {{ image.id.vars.value }}
+                    <a href="#" style="float:right;margin-right:3px;"><i class="icon-remove color-alert" data-image-delete></i></a>
+                </p>
+                <hr />
+                {% do image.setRendered %}
+            </li>
+        {% endfor %}
+        {% do images.setRendered %}
+        </ul>
+        <ul class="inline-list">
+            <li>
+                <a href="#" data-images-add-new>
+                    <i class="icon-plus-sign"></i> {{ 'action.addNewImage'|trans }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
