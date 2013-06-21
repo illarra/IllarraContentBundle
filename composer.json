@@ -2,7 +2,7 @@
   "name": "illarra/content-bundle",
   "description": "Entities and classes for managing website content.",
   "keywords": ["content", "bundle"],
-  "homepage": "https://bitbucket.org/illarra/illarracontentbundle",
+  "homepage": "https://github.com/illarra/IllarraContentBundle",
   "type": "symfony-bundle",
   "license": "MIT",
   "authors": [
