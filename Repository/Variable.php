@@ -1,6 +1,6 @@
 <?php
 
-namespace Illarra\ContentBundle\Entity;
+namespace Illarra\ContentBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
