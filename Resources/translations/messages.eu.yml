@@ -1,0 +1,7 @@
+admin:
+    content:
+        menu: Edukiak
+        content:
+            menu: Orokorrak
+        variable:
+            menu: Bariableak

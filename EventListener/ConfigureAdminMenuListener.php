@@ -21,9 +21,9 @@ class ConfigureAdminMenuListener
         if ($this->security->isGranted('ROLE_ADMIN_CONTENT') || $this->security->isGranted('ROLE_SUPER_ADMIN')) {
             $menu = $event->getMenu();
 
-            $menu->addChild('illarra_content', array('label' => 'menu.content.main'));
-            $menu['illarra_content']->addChild('menu.content.contents', array('route' => 'admin_illarra_content_content_index'));
-            $menu['illarra_content']->addChild('menu.content.variables', array('route' => 'admin_illarra_content_variable_index'));
+            $menu->addChild('content.menu');
+            $menu['content.menu']->addChild('content.content.menu', array('route' => 'admin_illarra_content_content_index'));
+            $menu['content.menu']->addChild('content.variable.menu', array('route' => 'admin_illarra_content_variable_index'));
         }
     }
 }

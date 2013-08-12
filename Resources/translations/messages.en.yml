@@ -1,0 +1,7 @@
+admin:
+    content:
+        menu: Contents
+        content:
+            menu: Main contents
+        variable:
+            menu: Variables
