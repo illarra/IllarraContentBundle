@@ -1,29 +1,31 @@
 {
-  "name": "illarra/content-bundle",
-  "description": "Entities and classes for managing website content.",
-  "keywords": ["content", "bundle"],
-  "homepage": "https://github.com/illarra/IllarraContentBundle",
-  "type": "symfony-bundle",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Asier Illarramendi",
-      "email": "asier@illarra.com"
+    "name": "illarra/content-bundle",
+    "description": "Entities and classes for managing website content.",
+    "keywords": ["content", "bundle"],
+    "homepage": "https://github.com/illarra/IllarraContentBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Asier Illarramendi",
+            "email": "asier@illarra.com"
+        },
+        {
+            "name": "Eneko Illarramendi",
+            "email": "eneko@illarra.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "knplabs/knp-markdown-bundle": "1.2.*@dev",
+        "liip/imagine-bundle": "dev-master"
     },
-    {
-      "name": "Eneko Illarramendi",
-      "email": "eneko@illarra.com"
-    }
-  ],
-  "require": {
-    "php": ">=5.4"
-  },
-  "require-dev": {
-    "symfony/framework-bundle": ">=2.3,<2.4-dev"
-  },
-  "autoload": {
-    "psr-0": { "Illarra\\ContentBundle": "" }
-  },
-  "target-dir": "Illarra/ContentBundle",
-  "minimum-stability": "dev"
+    "require-dev": {
+        "symfony/framework-bundle": ">=2.3,<2.4-dev"
+    },
+    "autoload": {
+        "psr-0": { "Illarra\\ContentBundle": "" }
+    },
+    "target-dir": "Illarra/ContentBundle",
+    "minimum-stability": "dev"
 }
