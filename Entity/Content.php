@@ -69,6 +69,10 @@ class Content
             case 'md':
                 return 'markdown';
             break;
+            case 'yml':
+            case 'yaml':
+                return 'yaml';
+            break;
             default:
                 return 'text';
             break;

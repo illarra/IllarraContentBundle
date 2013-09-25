@@ -2,6 +2,7 @@
 
 namespace Illarra\ContentBundle\Repository;
 
+use Symfony\Component\Yaml\Parser as YamlParser;
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityRepository;
 
@@ -40,6 +41,11 @@ class Content extends EntityRepository
         switch ($entity->getType()) {
             case 'markdown':
                 $content = $this->markdown->transformMarkdown($entity->getText());
+            break;
+            case 'yaml':
+                $yaml = new YamlParser();
+                $content = $yaml->parse($entity->getText());
+                $addDelimiters = false;
             break;
             default:
                 $content = $entity->getText();
