@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": ">=5.4",
+        "jms/di-extra-bundle": "1.4.*@dev",
         "knplabs/knp-markdown-bundle": "1.2.*@dev",
         "liip/imagine-bundle": "dev-master"
     },

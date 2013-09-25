@@ -14,6 +14,7 @@ public function registerBundles()
 {
     return array(
         // ...
+        new JMS\DiExtraBundle\JMSDiExtraBundle($this),
         new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
         new Liip\ImagineBundle\LiipImagineBundle(),
         new Illarra\ContentBundle\IllarraContentBundle(),
