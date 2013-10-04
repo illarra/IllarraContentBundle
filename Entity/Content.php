@@ -11,15 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Content
 {
     use \Knp\DoctrineBehaviors\Model\Timestampable\Timestampable,
-        \Knp\DoctrineBehaviors\Model\Translatable\Translatable;
-    
-    public function __call($method, $arguments)
+        \Knp\DoctrineBehaviors\Model\Translatable\Translatable,
+        \Illarra\CoreBundle\Traits\Helper\Truncate;
+
+    public function __toString()
     {
-        $method = in_array($method, ['text'])
-            ? 'get'.$method
-            : $method;
-        
-        return $this->proxyCurrentLocaleTranslation($method, $arguments);
+        return $this->getTag();
     }
     
     /**
@@ -61,6 +58,25 @@ class Content
         return $this->tag;
     }
 
+    /**
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->proxyCurrentLocaleTranslation('getText');
+    }
+
+    /**
+     * @return string
+     */
+    public function getExcerpt($length = 90)
+    {
+        return $this->truncate('getText', $length);
+    }
+
+    /**
+     * @return string
+     */
     public function getType()
     {
         $extension = pathinfo($this->getTag(), PATHINFO_EXTENSION);

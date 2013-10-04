@@ -18,7 +18,7 @@ class ConfigureAdminMenuListener
      */
     public function onMenuConfigure(ConfigureAdminMenuEvent $event)
     {
-        if ($this->security->isGranted('ROLE_ADMIN_CONTENT') || $this->security->isGranted('ROLE_SUPER_ADMIN')) {
+        if ($this->security->isGranted('ROLE_CONTENT_EDITOR') || $this->security->isGranted('ROLE_SUPER_ADMIN')) {
             $menu = $event->getMenu();
 
             $menu->addChild('content.menu');

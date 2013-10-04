@@ -1,6 +1,10 @@
 admin:
+    label:
+        tag:      Label
+        tagGroup: Label group
+        text:     Text
     content:
-        menu: Contents
+        menu:     Contents
         content:
             menu: Main contents
         variable:

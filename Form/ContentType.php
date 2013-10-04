@@ -8,27 +8,26 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ContentType extends AbstractType
 {
-    protected $entity;
+    private $userIsAdmin;
 
-    public function __construct($entity)
+    public function __construct($userIsAdmin)
     {
-        $this->entity = $entity;
+        $this->userIsAdmin = $userIsAdmin;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('tag', null, ['label' => 'content.label.tag'])
-            ->add('translations', 'collection', array(
-                'cascade_validation' => true,
-                'type' => new ContentTranslationType($this->entity),
-                'allow_add' => true,
-                'by_reference' => false,
-                'options' => array(
-                    'data_class' => 'Illarra\ContentBundle\Entity\ContentTranslation',
-                )
-            ))
-        ;
+        $entity = $builder->getData();
+
+        if ($this->userIsAdmin) {
+            $builder->add('tag');
+        } else {
+            $builder->remove('tag');
+        }
+
+        $builder->add('translations', 'translations', [
+            'type' => new ContentTranslationType($entity->getType()),
+        ]);
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)

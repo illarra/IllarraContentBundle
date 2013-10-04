@@ -8,23 +8,32 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ContentTranslationType extends AbstractType
 {
-    protected $entity;
+    private $type;
 
-    public function __construct($entity)
+    public function __construct($type)
     {
-        $this->entity = $entity;
+        $this->type = $type;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('locale', 'hidden');
 
-        switch ($this->entity->getType()) {
+        switch ($this->type) {
             case 'markdown':
-                $builder->add('text', null, ['label' => 'content.label.text', 'attr' => ['class' => 'js-markdown']]);
+                $builder->add('text', null, [
+                    'label' => false,
+                    'attr'  => ['class' => 'js-markdown'],
+                ]);
+            break;
+            case 'yaml':
+                $builder->add('text', null, [
+                    'label' => false,
+                    'attr'  => ['class' => 'js-yaml'],
+                ]);
             break;
             default:
-                $builder->add('text', null, ['label' => 'content.label.text']);
+                $builder->add('text', null, ['label' => false]);
             break;
         }
     }
